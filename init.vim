@@ -22,8 +22,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "NERDTree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToogle'}
-" theme
+
+" Gruvbox Theme
 Plug 'morhetz/gruvbox'
+
 Plug 'christoomey/vim-tmux-navigator'
 " Emmet
 Plug 'mattn/emmet-vim'
@@ -41,7 +43,6 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'scrooloose/nerdcommenter'
@@ -59,8 +60,32 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-fugitive'
 Plug 'gruvbox-community/gruvbox'
 
+" Vim for Rails
+Plug 'tpope/vim-rails'
+
+" Colorize
+Plug 'norcalli/nvim-colorizer.lua'
+" load this =>  :lua require'colorizer'.setup()
+
+" Plug about RSpec
+Plug 'skwp/vim-rspec'
+" :RunSpec for current file
+" :RunSpecLine for current line (current 'it' block)
+" :RunSpecs for all files in spec dir
+
+" Complete to import 
+Plug 'billyvg/node-host', { 'do': 'npm install' }
+
+" REACT snippets
+Plug 'mlaursen/vim-react-snippets'
+
+" Float Terminal in nvim
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
+"NERDTree position right
+" let g:NERDTreeWinPos="right"
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 
@@ -72,15 +97,21 @@ endif
 let g:gruvbox_invert_selection='0'
 set background=dark
 
-" let NERDTreeQuitOnOpen=1 , cuando se abre el archivo se esconde NERDTree
-let NERDTreeQuitOnOpen=1 " 1 hidden
+let NERDTreeClose=1 " cuando se abre el file se esconde NERDTree
+let NERDTreeQuitOnOpen=0 " cuando se abre el file NERDTree permanece abierto
 " utilizar la tecla para easy motion SPC
 let mapleader=" "
 let g:NERDTreeGitStatusWithFlags = 1
 command! -nargs=1 Prettier :CocCommand prettier.formatFile
 
 nmap <Leader>s <Plug>(easymotion-s2)
+
+" Close NERDTree
+nmap <Leader>ft :NERDTreeClose<CR>
+
+" Open NERDTree
 nmap <Leader>nt :NERDTreeFind<CR>
+
 " save file with this config
 nmap <Leader>w :w<CR>
 " exit nvim whitout save 
@@ -153,7 +184,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " ****************************************
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 let g:closetag_filetypes = 'html,xhtml,phtml'
 let g:closetag_xhtml_filetypes = 'xhtml,jsx'
@@ -163,7 +193,10 @@ let g:closetag_regions = {
     \ 'javascript.jsx': 'jsxRegion',
     \ }
 
+
+" Close Tag all bracket 
 let g:closetag_shortcut = '>'
+let g:closetag_filenames = "*.html.erb, *.html, *.xhtml, *.phtml"
 let g:closetag_close_shortcut = '<leader>>'
 
 " Git command
@@ -174,3 +207,24 @@ nmap <Leader>gs :G<CR>
 " Neoclide coc.nvim 
 nmap <Leader>rr <Plug>(coc-rename)
 nnoremap <Leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+" Emmet enable " Ctrl + y + , enable the completacion , don't forgot Tinix!
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
+"Enable just for html/css
+let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<A-c>'  " Alt + c
+autocmd FileType html,css EmmetInstall
+
+" import React, Angular, Vue... etc 
+let g:jsimport#reporting = 1
+
+"Float terminal on Nvim config
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_toggle = '<F12>'
+
+
