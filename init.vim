@@ -82,6 +82,10 @@ Plug 'mlaursen/vim-react-snippets'
 " Float Terminal in nvim
 Plug 'voldikss/vim-floaterm'
 
+" Multiple cursores
+Plug 'terryma/vim-multiple-cursors'
+
+
 call plug#end()
 
 "NERDTree position right
@@ -226,5 +230,20 @@ let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_prev   = '<F8>'
 let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
+
+
+
+" Default mapping
+let g:multi_cursor_use_default_mapping=0
+
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
+" End multiple Cursor
 
 
