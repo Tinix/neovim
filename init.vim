@@ -14,12 +14,16 @@ set laststatus=2
 set smarttab
 set shiftwidth=2
 set relativenumber
+"ctags
+set tags=./tags;/
 
 call plug#begin('~/.local/share/nvim/plugged')
 " Ide
 Plug 'easymotion/vim-easymotion'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
+
 "NERDTree
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToogle'}
 
@@ -246,4 +250,10 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 " End multiple Cursor
 
-
+" Install ctags # sudo pacman -S ctags universal-ctags
+"run inside the project $ctags -R * 
+" map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" Alt-right/left to navigate forward/backward in the tags stack
+map <M-Left> <C-T>
+map <M-Right> <C-]>
