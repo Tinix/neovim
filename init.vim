@@ -279,6 +279,10 @@ nnoremap <Leader>G :G<cr>
 nnoremap <Leader>gp :Gpush
 nnoremap <Leader>gl ::Gpull
 
+" SkylightPreview & SkylightJumpTo
+nnoremap <silent>go :SkylightJumpTo<CR>
+nnoremap <silent>gp :SkylightPreview<CR>
+
 
 " Use <c-space> to trigger completation.
 if &filetype== "python" || &filetype == "javascript" || &filetype == "ruby" || &filetype == "elixir"
@@ -287,6 +291,19 @@ else
   inoremap <silent><expr> <c-space> coc#refresh()
 endif
 
+
+" Opern terminal
+set splitright
+function! OpenTerminal()
+  " mvoe to right most buffer
+  execute "normal  \<C-l>"
+  execute "normal  \<C-l>"
+  execute "normal  \<C-l>"
+  execute "normal  \<C-l>"
+  execute "normal  \<C-l>"
+
+  let bufNum = bufNum("%")
+endfunction
 
 
 " -- Autocompletation
@@ -517,7 +534,7 @@ let g:lightline = {
     \ 'codelf_status': '%{exists("g:codelf_status") ? g:codelf_status : ""}',
     \ 'translator_status': '%{exists("g:translator_status") ? g:translator_status : ""}',
     \ 'asyncrun_status': '%{exists("g:asyncrun_status") ? g:asyncrun_status : ""}',
-    \ 'close': '%{has("nvim") ? " NEOVIM " : " VIM "}',
+    \ 'close': '%{has("nvim") ? " NeoVim " : " VIM "}',
     \ 'vim_logo': "tinix "
   \ },
   \ 'component_function': {
