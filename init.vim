@@ -64,6 +64,7 @@ Plug 'franbach/miramare'
 Plug 'jcherven/jummidark.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryuta69/elly.vim' "https://github.com/ulwlu/elly.vim
+Plug 'chriskempson/base16-vim'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -95,6 +96,8 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
+" CoffeeScript
+Plug 'kchmck/vim-coffee-script'
 
 " React
 Plug 'yuezk/vim-js'
@@ -180,8 +183,8 @@ call plug#end()
 " let g:NERDTreeWinPos="right"
 
 " Colorscheme: {{{
-colorscheme gruvbox
-"}}}
+colorscheme dracula
+" }}}
 
 
 "call github_colors#togglebg_map('<f5>') 
@@ -193,14 +196,16 @@ if exists('+termguicolors')
 endif
 
 " Gruvbox configuration: {{{
-"let g:gruvbox_invert_selection='0'
-"let g:airline_powerline_fonts = 1
+let g:gruvbox_invert_selection='0'
+let g:airline_powerline_fonts = 1
 let g:airline_theme='https://github.com/vim-airline/vim-airline-themes'
 :set background=dark
-"let g:gruvbox_contrast_dark = 'hard'
-"let g:gruvbox_termcolors = 256
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_termcolors = 256
 "}}}
 "
+
+
 
 let NERDTreeClose=1 " cuando se abre el file se esconde NERDTree
 let NERDTreeQuitOnOpen=0 " cuando se abre el file NERDTree permanece abierto
@@ -283,6 +288,11 @@ nnoremap <Leader>gl ::Gpull
 nnoremap <silent>go :SkylightJumpTo<CR>
 nnoremap <silent>gp :SkylightPreview<CR>
 
+" Navigator between windows [Alt+arrow]
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
 " Use <c-space> to trigger completation.
 if &filetype== "python" || &filetype == "javascript" || &filetype == "ruby" || &filetype == "elixir"
@@ -354,6 +364,10 @@ let g:coc_global_extensions = [
   \ 'coc-yank'
   \]
 " }}}
+
+"Emmet enable config just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " Devicons enable
 let g:webdevicons_enable_ctrlp = 1
@@ -510,7 +524,7 @@ let g:kite_supported_languajes = ['ruby', 'javascript', 'elixir', 'python', 'htm
 
 " itchyny/lightline.vim
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'dracula',
   \ 'active': {
     \ 'left': [
       \ ['mode', 'paste'],
